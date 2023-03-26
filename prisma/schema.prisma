@@ -21,6 +21,28 @@ model Task {
   taskTitle String?
   description String?
 }
+model SetProduct {
+  id Int @default(autoincrement()) @id
+  productName String?
+  manufacturerDate String?
+  activeStatus Int @default(1)
+  createdAt DateTime @default(now())
+  createdBy Int?
+  updatedAt DateTime?
+  updatedBy Int?
+  product Product[]
+}
+model Product {
+  id Int @default(autoincrement()) @id
+  setProduct SetProduct? @relation(fields:[setProductId], references:[id])
+  setProductId Int?
+  qty Float?
+  activeStatus Int @default(1)
+  createdAt DateTime @default(now())
+  createdBy Int?
+  updatedAt DateTime?
+  updatedBy Int?
+}
 model Test {
   id   Int @default(autoincrement()) @id
 }
