@@ -41,9 +41,14 @@ export class ProductsService {
       },
     });
     return { message: 'Updatd successfully', result };
-}
+  }
 
-  async delete() {
-    return 'delete products';
+  async deleteProduct(id: number) {
+    const result = await this.prisma.product.delete({
+      where: {
+        id: Number(id),
+      },
+    });
+    return { message: 'Successfully Delete' };
   }
 }

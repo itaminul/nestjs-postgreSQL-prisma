@@ -3,6 +3,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -40,6 +41,15 @@ export class Products {
   async update(@Param('id') id: number, @Body() udto: UpdateProductsDto) {
     try {
       return this.productsService.update(udto, id);
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
+  }
+
+  @Delete(':id')
+  async deleteProduct(@Param('id') id: number) {
+    try {
+      return this.productsService.deleteProduct(id);
     } catch (error) {
       throw new BadRequestException(error);
     }
