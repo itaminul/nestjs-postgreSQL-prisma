@@ -32,6 +32,30 @@ model SetProduct {
   updatedBy Int?
   product Product[]
 }
+
+model SetDivision {
+  id Int @default(autoincrement()) @id
+  divisionName String?
+  activeStatus Int @default(1)
+  createdAt DateTime @default(now())
+  createdBy Int?
+  updatedAt DateTime?
+  updatedBy Int?
+  students Students[]
+}
+
+
+model SetDistrict {
+  id Int @default(autoincrement()) @id
+  districtName String?
+  activeStatus Int @default(1)
+  createdAt DateTime @default(now())
+  createdBy Int?
+  updatedAt DateTime?
+  updatedBy Int?
+  students Students[]
+}
+
 model Product {
   id Int @default(autoincrement()) @id
   setProduct SetProduct? @relation(fields:[setProductId], references:[id])
@@ -42,6 +66,25 @@ model Product {
   createdBy Int?
   updatedAt DateTime?
   updatedBy Int?
+}
+
+model Students {
+  id Int @default(autoincrement()) @id
+  name String?
+  fatherName String?
+  motherName String?
+  email String?
+  mobile String?
+  age Float?
+  setDivision SetDivision? @relation(fields:[divisionId], references:[id])
+  divisionId Int?
+  setDistrict SetDistrict? @relation(fields:[districtId], references:[id])
+  districtId Int?
+  policeStation Int?
+  address String?
+  dateOfbirth String?
+  activeStatus Int @default(1)
+  createdAt DateTime @default(now())
 }
 model Test {
   id   Int @default(autoincrement()) @id

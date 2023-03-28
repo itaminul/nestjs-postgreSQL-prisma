@@ -9,16 +9,8 @@ export class UserService {
 
   async getuserById(id: number) {
     const userId = Number(id);
-    const result = this.prisma.user.findUnique({
+    const result = this.prisma.user.findMany({
       where: { id: userId },
-    });
-    return result;
-  }
-
-  async getuserByUserName(email: string) {
-    // const userId = Number(id);
-    const result = this.prisma.user.findFirst({
-      where: { email: email },
     });
     return result;
   }

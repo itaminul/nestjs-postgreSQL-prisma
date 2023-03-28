@@ -15,18 +15,10 @@ export class Users {
 }
 
 @Get('/:id')
-  async getUserById(@Param('id') id: number){
+  async getUserById(@Param('id') id: number): Promise<User[]> {
 
     return this.userService.getuserById(id);
 }
-
-
-@Get('/:id')
-  async getUserByName(@Param('id') email: string){
-
-    return this.userService.getuserByUserName(email);
-}
-
 }
 
 
