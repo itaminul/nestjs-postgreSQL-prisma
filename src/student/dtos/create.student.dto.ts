@@ -1,4 +1,14 @@
-import { IsEmail, IsEmpty, IsNotEmpty, IsNumber, IsNumberString, IsString, max, MAX, Max, MaxLength, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsNumber,
+  IsNumberString,
+  IsString,
+  Max,
+  MaxLength,
+  Min,
+  MinLength,
+} from 'class-validator';
 
 export class CreateStudentDto {
   @IsNotEmpty()
@@ -20,6 +30,8 @@ export class CreateStudentDto {
   @MinLength(5)
   mobile: string;
   @IsNumber()
+  @Min(40)
+  @Max(50)
   age: number;
   @IsNumber()
   divisionId: number;
