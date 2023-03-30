@@ -12,72 +12,15 @@ export class Users {
   @Get()
   async getAll(): Promise<User[]> {
     return this.userService.getAll();
-}
+  }
 
-@Get('/:id')
-  async getUserById(@Param('id') id: number){
-
+  @Get('/:id')
+  async getUserById(@Param('id') id: number) {
     return this.userService.getuserById(id);
-}
+  }
 
-
-@Get('/:id')
-  async getUserByName(@Param('id') email: string){
-
+  @Get('/:id')
+  async getUserByName(@Param('id') email: string) {
     return this.userService.getuserByUserName(email);
+  }
 }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

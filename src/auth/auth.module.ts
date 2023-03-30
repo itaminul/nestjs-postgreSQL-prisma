@@ -7,9 +7,18 @@ import { SessionSerializer } from './session.serializer';
 import { PassportModule } from '@nestjs/passport';
 import { UserModule } from 'src/users/users.module';
 import { UserService } from 'src/users/users.service';
+import { AccessTokenStrategy } from './strategies/accessToken.strategy';
+import { RefreshTokenStrategy } from './strategies/refreshToken.strategy';
 @Module({
   imports: [UserModule, JwtModule, PassportModule.register({ session: true })],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, SessionSerializer, UserService],
+  providers: [
+    AuthService,
+    LocalStrategy,
+    SessionSerializer,
+    UserService,
+    AccessTokenStrategy,
+    RefreshTokenStrategy,
+  ],
 })
 export class AuthModule {}

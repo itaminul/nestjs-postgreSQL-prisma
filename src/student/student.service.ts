@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { CreateStudentDto } from './dtos/create.student.dto';
+import { UpdateStudentDto } from './dtos/update.student.dto';
 
 @Injectable()
 export class StudentService {
@@ -23,7 +24,7 @@ export class StudentService {
       address,
       age,
     } = dto;
-    
+
     return await this.prisma.students.create({
       data: {
         name,
@@ -37,13 +38,49 @@ export class StudentService {
         policeStation,
         address,
         age,
-       },
+      },
     });
   }
-  update() {
-    return 'update';
+  async update(dto: UpdateStudentDto, id: number) {
+    const {
+      name,
+      fatherName,
+      motherName,
+      dateOfbirth,
+      mobile,
+      divisionId,
+      districtId,
+      email,
+      policeStation,
+      address,
+      age,
+    } = dto;
+    const result = await this.prisma.students.update({
+      where: {
+        id: Number(id),
+      },
+      data: {
+        name,
+        fatherName,
+        motherName,
+        dateOfbirth,
+        mobile,
+        divisionId,
+        districtId,
+        email,
+        policeStation,
+        address,
+        age,
+      },
+    });
+    return { message: 'Update Successfully', result };
   }
-  deleteStudent() {
-    return 'delete student';
+  async deleteStudent(id: number) {
+    const deletBiId = Number(id);
+    return await this.prisma.students.delete({
+      where: {
+        id: deletBiId,
+      },
+    });
   }
 }
