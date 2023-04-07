@@ -23,13 +23,12 @@ export class ProductsService {
         qty,
       },
     });
-
     return { message: 'Save successfully', result };
   }
 
   async update(udto: UpdateProductsDto, id: number) {
     const { setProductId, qty, activeStatus } = udto;
-    console.log('up', udto);
+    //console.log('up', udto);
     const result = await this.prisma.product.updateMany({
       where: {
         id: Number(id),
