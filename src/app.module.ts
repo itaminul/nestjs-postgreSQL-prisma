@@ -11,6 +11,9 @@ import { StudentService } from './student/student.service';
 import { SetProductController } from './set-product/set-product.controller';
 import { SetProductModule } from './set-product/set-product.module';
 import { SetProductService } from './set-product/set-product.service';
+import { SetDivisionService } from './set-division/set-division-service';
+import { SetDivision } from './set-division/set-division-controller';
+import { SetDivisionModule } from './set-division/set-division-module';
 @Module({
   imports: [
     AuthModule,
@@ -19,8 +22,14 @@ import { SetProductService } from './set-product/set-product.service';
     ProductsModule,
     StudentModule,
     SetProductModule,
+    SetDivisionModule,
   ],
-  controllers: [Products, StudentController, SetProductController],
-  providers: [ProductsService, StudentService, SetProductService],
+  controllers: [Products, StudentController, SetProductController, SetDivision],
+  providers: [
+    ProductsService,
+    StudentService,
+    SetProductService,
+    SetDivisionService,
+  ],
 })
 export class AppModule {}
